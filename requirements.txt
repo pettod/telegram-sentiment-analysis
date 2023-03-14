@@ -1,0 +1,2 @@
+pysentimiento==0.5.2
+python-highcharts==0.4.2
