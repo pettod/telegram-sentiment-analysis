@@ -29,12 +29,16 @@ class Analyzer():
             sentiments_1, sentiments_2,
             "Sentiment analysis from Telegram messages",
             "Sentiment",
+            "Messages",
+            "messages",
             "absolute_sentiment",
         )
         self.__createChart(
             emotions_1, emotions_2,
             "Emotions analysis from Telegram messages",
             "Emotions",
+            "Messages",
+            "messages",
             "absolute_emotions",
         )
 
@@ -56,12 +60,16 @@ class Analyzer():
             sentiments_1, sentiments_2,
             "Sentiment analysis from Telegram messages",
             "Sentiment",
+            "Percentage",
+            "%",
             "relative_sentiment",
         )
         self.__createChart(
             emotions_1, emotions_2,
             "Emotions analysis from Telegram messages",
             "Emotions",
+            "Percentage",
+            "%",
             "relative_emotions",
         )
 
@@ -102,7 +110,7 @@ class Analyzer():
             emotions[key.title()] = emotions.pop(key)
         return emotions
 
-    def __createChart(self, data_1, data_2, title, x_axis_label, save_file_name):
+    def __createChart(self, data_1, data_2, title, x_axis_label, y_axis_label, unit, save_file_name):
         chart = Highchart()
         options = {
             "chart": {
@@ -148,7 +156,7 @@ class Analyzer():
             "yAxis": {
                 "allowDecimals": False,
                 "title": {
-                    "text": "Number of messages",
+                    "text": y_axis_label,
                     "style": {
                         "fontSize": "25px",
                     },
@@ -171,7 +179,7 @@ class Analyzer():
             },
             "tooltip": {
                 "headerFormat": "<b>{point.key}</b><br/>",
-                "pointFormat": "{series.name}<br/>{point.y} messages",
+                "pointFormat": "{series.name}<br/>{point.y} " + unit,
                 "style": {
                     "fontSize": "17px",
                 },
